@@ -11,7 +11,11 @@ const specialists = [
     rating: 4.9,
     reviews: 124,
     image: "https://i.pravatar.cc/150?u=dr1",
-    location: "Mayo Clinic, USA"
+    country: "USA",
+    state: "Minnesota",
+    location: "Mayo Clinic, Rochester",
+    languages: ["English", "Spanish"],
+    budget: 1500
   },
   {
     id: 2,
@@ -21,7 +25,11 @@ const specialists = [
     rating: 4.8,
     reviews: 89,
     image: "https://i.pravatar.cc/150?u=dr2",
-    location: "Bumrungrad International, Thailand"
+    country: "Thailand",
+    state: "Bangkok",
+    location: "Bumrungrad International",
+    languages: ["English", "Mandarin"],
+    budget: 800
   },
   {
     id: 3,
@@ -31,7 +39,11 @@ const specialists = [
     rating: 5.0,
     reviews: 210,
     image: "https://i.pravatar.cc/150?u=dr3",
-    location: "Hospital Israelita Albert Einstein, Brazil"
+    country: "Brazil",
+    state: "São Paulo",
+    location: "Hospital Israelita Albert Einstein",
+    languages: ["English", "Portuguese", "Spanish"],
+    budget: 1200
   },
   {
     id: 4,
@@ -41,7 +53,11 @@ const specialists = [
     rating: 4.7,
     reviews: 95,
     image: "https://i.pravatar.cc/150?u=dr4",
-    location: "Charité - Universitätsmedizin Berlin, Germany"
+    country: "Germany",
+    state: "Berlin",
+    location: "Charité - Universitätsmedizin",
+    languages: ["English", "German"],
+    budget: 1800
   },
   {
     id: 5,
@@ -51,7 +67,11 @@ const specialists = [
     rating: 4.9,
     reviews: 156,
     image: "https://i.pravatar.cc/150?u=dr5",
-    location: "Apollo Hospitals, India"
+    country: "India",
+    state: "Delhi",
+    location: "Apollo Hospitals",
+    languages: ["English", "Hindi", "Punjabi"],
+    budget: 600
   },
   {
     id: 6,
@@ -61,26 +81,136 @@ const specialists = [
     rating: 4.6,
     reviews: 312,
     image: "https://i.pravatar.cc/150?u=dr6",
-    location: "The Royal Marsden, UK"
+    country: "UK",
+    state: "London",
+    location: "The Royal Marsden",
+    languages: ["English", "French"],
+    budget: 2000
+  },
+  {
+    id: 7,
+    name: "Dr. Amara Okafor",
+    department: "Dermatology",
+    experience: "8+ Years",
+    rating: 4.7,
+    reviews: 67,
+    image: "https://i.pravatar.cc/150?u=dr7",
+    country: "Nigeria",
+    state: "Lagos",
+    location: "Lagoon Hospital",
+    languages: ["English", "Igbo"],
+    budget: 700
+  },
+  {
+    id: 8,
+    name: "Dr. Yuki Tanaka",
+    department: "Cardiology",
+    experience: "14+ Years",
+    rating: 4.9,
+    reviews: 142,
+    image: "https://i.pravatar.cc/150?u=dr8",
+    country: "Japan",
+    state: "Tokyo",
+    location: "St. Luke's International",
+    languages: ["English", "Japanese"],
+    budget: 1600
+  },
+  {
+    id: 9,
+    name: "Dr. Hans Müller",
+    department: "Orthopedics",
+    experience: "22+ Years",
+    rating: 4.8,
+    reviews: 189,
+    image: "https://i.pravatar.cc/150?u=dr9",
+    country: "Germany",
+    state: "Bavaria",
+    location: "Helios Hospital",
+    languages: ["English", "German"],
+    budget: 1400
+  },
+  {
+    id: 10,
+    name: "Dr. Aisha Al-Sayed",
+    department: "Oncology",
+    experience: "16+ Years",
+    rating: 5.0,
+    reviews: 110,
+    image: "https://i.pravatar.cc/150?u=dr10",
+    country: "UAE",
+    state: "Dubai",
+    location: "Cleveland Clinic",
+    languages: ["English", "Arabic"],
+    budget: 1900
+  },
+  {
+    id: 11,
+    name: "Dr. Rajesh Gupta",
+    department: "Dermatology",
+    experience: "11+ Years",
+    rating: 4.5,
+    reviews: 98,
+    image: "https://i.pravatar.cc/150?u=dr11",
+    country: "India",
+    state: "Maharashtra",
+    location: "Fortis Memorial",
+    languages: ["English", "Hindi"],
+    budget: 550
+  },
+  {
+    id: 12,
+    name: "Dr. Sofia Rossi",
+    department: "Neurology",
+    experience: "13+ Years",
+    rating: 4.8,
+    reviews: 76,
+    image: "https://i.pravatar.cc/150?u=dr12",
+    country: "Italy",
+    state: "Rome",
+    location: "San Raffaele Hospital",
+    languages: ["English", "Italian"],
+    budget: 1300
   }
 ];
 
 const departments = ["All", "Cardiology", "Oncology", "Orthopedics", "Neurology", "Dermatology"];
-const regions = ["All Regions", "USA", "Thailand", "India", "Germany", "Brazil", "UK"];
+const regions = ["All Regions", "USA", "Thailand", "India", "Germany", "Brazil", "UK", "Japan", "UAE", "Italy", "Nigeria"];
+const languages = ["All", "English", "Hindi", "Spanish", "Mandarin", "German", "French", "Portuguese", "Japanese", "Arabic", "Italian", "Igbo"];
+
+const countryStates = {
+  "USA": ["Minnesota", "California", "New York", "Texas"],
+  "India": ["Delhi", "Maharashtra", "Karnataka", "Tamil Nadu", "Haryana"],
+  "Germany": ["Berlin", "Bavaria", "Hamburg"],
+  "Thailand": ["Bangkok", "Phuket", "Chiang Mai"],
+  "Brazil": ["São Paulo", "Rio de Janeiro"],
+  "UK": ["London", "Manchester", "Edinburgh"],
+  "Japan": ["Tokyo", "Osaka", "Kyoto"],
+  "UAE": ["Dubai", "Abu Dhabi"],
+  "Italy": ["Rome", "Milan"],
+  "Nigeria": ["Lagos", "Abuja"]
+};
 
 const Specialists = () => {
   const [selectedDept, setSelectedDept] = useState("All");
-  const [selectedLocation, setSelectedLocation] = useState("All Regions");
+  const [selectedCountry, setSelectedCountry] = useState("All Regions");
+  const [selectedState, setSelectedState] = useState("All States");
+  const [selectedLanguage, setSelectedLanguage] = useState("All");
+  const [maxBudget, setMaxBudget] = useState(2000);
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredSpecialists = specialists.filter(s => {
     const matchesDept = selectedDept === "All" || s.department === selectedDept;
-    const matchesLocation = selectedLocation === "All Regions" || s.location.toLowerCase().includes(selectedLocation.toLowerCase());
+    const matchesCountry = selectedCountry === "All Regions" || s.country === selectedCountry;
+    const matchesState = selectedState === "All States" || s.state === selectedState;
+    const matchesLanguage = selectedLanguage === "All" || s.languages.includes(selectedLanguage);
+    const matchesBudget = s.budget <= maxBudget;
     const matchesSearch = s.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                          s.department.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         s.location.toLowerCase().includes(searchQuery.toLowerCase());
+                         s.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         s.country.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         s.state.toLowerCase().includes(searchQuery.toLowerCase());
     
-    return matchesDept && matchesLocation && matchesSearch;
+    return matchesDept && matchesCountry && matchesState && matchesLanguage && matchesBudget && matchesSearch;
   });
 
   return (
@@ -121,7 +251,7 @@ const Specialists = () => {
               />
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid lg:grid-cols-2 gap-12">
               {/* Department Filter */}
               <div>
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
@@ -145,19 +275,22 @@ const Specialists = () => {
                 </div>
               </div>
 
-              {/* Location Filter */}
+              {/* Country Filter */}
               <div>
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
-                  Preferred Region
+                  Select Country
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {regions.map(region => (
                     <button
                       key={region}
-                      onClick={() => setSelectedLocation(region)}
+                      onClick={() => {
+                        setSelectedCountry(region);
+                        setSelectedState("All States");
+                      }}
                       className={`px-6 py-3 rounded-2xl font-bold text-sm transition-all ${
-                        selectedLocation === region 
+                        selectedCountry === region 
                         ? "bg-teal-600 text-white shadow-lg scale-[1.02]" 
                         : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-900"
                       }`}
@@ -165,6 +298,93 @@ const Specialists = () => {
                       {region}
                     </button>
                   ))}
+                </div>
+              </div>
+
+              {/* State Filter (Conditional) */}
+              {selectedCountry !== "All Regions" && countryStates[selectedCountry] && (
+                <div className="animate-in fade-in slide-in-from-left-4 duration-500">
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                    Select State/Region
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => setSelectedState("All States")}
+                      className={`px-6 py-3 rounded-2xl font-bold text-sm transition-all ${
+                        selectedState === "All States" 
+                        ? "bg-cyan-600 text-white shadow-lg scale-[1.02]" 
+                        : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-900"
+                      }`}
+                    >
+                      All States
+                    </button>
+                    {countryStates[selectedCountry].map(state => (
+                      <button
+                        key={state}
+                        onClick={() => setSelectedState(state)}
+                        className={`px-6 py-3 rounded-2xl font-bold text-sm transition-all ${
+                          selectedState === state 
+                          ? "bg-cyan-600 text-white shadow-lg scale-[1.02]" 
+                          : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-900"
+                        }`}
+                      >
+                        {state}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Language Filter */}
+              <div>
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                  Language
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {languages.map(lang => (
+                    <button
+                      key={lang}
+                      onClick={() => setSelectedLanguage(lang)}
+                      className={`px-6 py-3 rounded-2xl font-bold text-sm transition-all ${
+                        selectedLanguage === lang 
+                        ? "bg-indigo-600 text-white shadow-lg scale-[1.02]" 
+                        : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-900"
+                      }`}
+                    >
+                      {lang}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Budget Filter */}
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                    Consultation Budget
+                  </p>
+                  <span className="text-sm font-black text-slate-900 bg-amber-50 px-3 py-1 rounded-lg border border-amber-100">
+                    Max: ₹{maxBudget}
+                  </span>
+                </div>
+                <div className="px-6 py-8 bg-slate-50 rounded-[2rem] border border-slate-100">
+                  <input 
+                    type="range" 
+                    min="500" 
+                    max="2000" 
+                    step="100"
+                    value={maxBudget}
+                    onChange={(e) => setMaxBudget(parseInt(e.target.value))}
+                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-600"
+                  />
+                  <div className="flex justify-between mt-4 text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">
+                    <span>₹500</span>
+                    <span>₹1250</span>
+                    <span>₹2000</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -175,7 +395,8 @@ const Specialists = () => {
         <section className="container mx-auto px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredSpecialists.map(specialist => {
-              const isPreferred = selectedLocation !== "All Regions" && specialist.location.toLowerCase().includes(selectedLocation.toLowerCase());
+              const isPreferred = (selectedCountry !== "All Regions" && specialist.country === selectedCountry) || 
+                                (selectedState !== "All States" && specialist.state === selectedState);
               
               return (
                 <div key={specialist.id} className={`group bg-white rounded-[3rem] p-8 border ${isPreferred ? 'border-teal-200 ring-4 ring-teal-50' : 'border-slate-100'} shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative overflow-hidden`}>
@@ -222,7 +443,17 @@ const Specialists = () => {
                         <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center shadow-sm">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-teal-600"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                         </div>
-                        {specialist.location}
+                        {specialist.location}, {specialist.state}, {specialist.country}
+                      </div>
+                      <div className="flex items-center gap-3 text-slate-600 font-bold text-sm bg-slate-50 p-3 rounded-2xl">
+                        <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center shadow-sm">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600"><path d="m5 8 6 6 6-6"/><path d="m5 12 6 6 6-6"/></svg>
+                        </div>
+                        {specialist.languages.join(", ")}
+                      </div>
+                      <div className="flex items-center gap-3 text-slate-600 font-bold text-sm bg-slate-50 p-3 rounded-2xl">
+                        <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center shadow-sm text-amber-600 font-black">₹</div>
+                        Consultation: ₹{specialist.budget}
                       </div>
                     </div>
                   </div>
