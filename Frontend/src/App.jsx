@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Specialists from './pages/Specialists';
-import CostTransparency from './pages/CostTransparency';
 import CostExplorer from './pages/CostExplorer';
 
 function App() {
@@ -14,7 +13,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/specialists" element={<Specialists />} />
         <Route path="/cost-explorer" element={<CostExplorer />} />
-        <Route path="/cost-transparency" element={<CostTransparency />} />
+       
       </Routes>
     </Router>
   );
