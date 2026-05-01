@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -28,22 +28,29 @@ const Footer = () => {
           </div>
 
           {/* Links */}
-          {['Company', 'Support', 'Legal'].map((title, idx) => (
-            <div key={title}>
-              <h4 className="text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">{title}</h4>
-              <ul className="space-y-4">
-                {idx === 0 && ['About Us', 'Contact', 'Specialists', 'Cost Explorer'].map(link => (
-                  <li key={link}><a href="#" className="text-slate-600 font-bold hover:text-teal-600 transition-colors">{link}</a></li>
-                ))}
-                {idx === 1 && ['Help Center', 'FAQs', 'Partner with Us', 'Emergency'].map(link => (
-                  <li key={link}><a href="#" className="text-slate-600 font-bold hover:text-teal-600 transition-colors">{link}</a></li>
-                ))}
-                {idx === 2 && ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Global Compliance'].map(link => (
-                  <li key={link}><a href="#" className="text-slate-600 font-bold hover:text-teal-600 transition-colors">{link}</a></li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div>
+            <h4 className="text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Company</h4>
+            <ul className="space-y-4">
+              <li><Link to="/" className="text-slate-600 font-bold hover:text-teal-600 transition-colors">About Us</Link></li>
+              <li><Link to="/specialists" className="text-slate-600 font-bold hover:text-teal-600 transition-colors">Specialists</Link></li>
+              <li><Link to="/cost-explorer?treatment=Cardiology&location=Delhi" className="text-slate-600 font-bold hover:text-teal-600 transition-colors">Cost Explorer</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Support</h4>
+            <ul className="space-y-4">
+              <li><a href="#" className="text-slate-600 font-bold hover:text-teal-600 transition-colors">Help Center</a></li>
+              <li><a href="#" className="text-slate-600 font-bold hover:text-teal-600 transition-colors">FAQs</a></li>
+              <li><a href="#" className="text-slate-600 font-bold hover:text-teal-600 transition-colors">Emergency</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Legal</h4>
+            <ul className="space-y-4">
+              <li><a href="#" className="text-slate-600 font-bold hover:text-teal-600 transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="text-slate-600 font-bold hover:text-teal-600 transition-colors">Terms of Service</a></li>
+            </ul>
+          </div>
         </div>
 
         <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-8">
