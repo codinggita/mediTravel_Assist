@@ -28,7 +28,7 @@ const Signup = () => {
     console.log('Attempting signup with:', { ...formData, password: '***' });
 
     try {
-      const response = await fetch('http://localhost:5000/api/users/register', {
+      const response = await fetch('https://meditravel-assist.onrender.com/api/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
