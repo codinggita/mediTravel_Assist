@@ -2,186 +2,118 @@ export const costData = [
   {
     treatment: "Knee Surgery",
     city: "Delhi",
-    hospitalType: "Private",
-    minCost: 50000,
-    maxCost: 70000,
+    minCost: 55000,
+    maxCost: 75000,
+    tag: "Premium",
     breakdown: {
       doctor: 15000,
-      hospital: 40000,
+      hospital: 45000,
       medicine: 10000,
       tests: 5000
-    }
-  },
-  {
-    treatment: "Knee Surgery",
-    city: "Delhi",
-    hospitalType: "Government",
-    minCost: 15000,
-    maxCost: 30000,
-    breakdown: {
-      doctor: 2000,
-      hospital: 10000,
-      medicine: 5000,
-      tests: 3000
-    }
-  },
-  {
-    treatment: "Knee Surgery",
-    city: "Delhi",
-    hospitalType: "Premium",
-    minCost: 120000,
-    maxCost: 180000,
-    breakdown: {
-      doctor: 40000,
-      hospital: 100000,
-      medicine: 25000,
-      tests: 15000
-    }
-  },
-  {
-    treatment: "Knee Surgery",
-    city: "Mumbai",
-    hospitalType: "Private",
-    minCost: 65000,
-    maxCost: 95000,
-    breakdown: {
-      doctor: 20000,
-      hospital: 55000,
-      medicine: 12000,
-      tests: 8000
-    }
-  },
-  {
-    treatment: "Knee Surgery",
-    city: "Mumbai",
-    hospitalType: "Government",
-    minCost: 20000,
-    maxCost: 40000,
-    breakdown: {
-      doctor: 3000,
-      hospital: 15000,
-      medicine: 7000,
-      tests: 5000
-    }
-  },
-  {
-    treatment: "Knee Surgery",
-    city: "Mumbai",
-    hospitalType: "Premium",
-    minCost: 150000,
-    maxCost: 250000,
-    breakdown: {
-      doctor: 60000,
-      hospital: 140000,
-      medicine: 30000,
-      tests: 20000
-    }
+    },
+    timeline: [
+      { day: 1, label: "Consultation", cost: 2000 },
+      { day: 2, label: "Diagnostic Tests", cost: 5000 },
+      { day: 3, label: "Knee Surgery (OT)", cost: 55000 },
+      { day: 5, label: "Physio & Discharge", cost: 8000 }
+    ],
+    travel: 6000,
+    stayPerDay: 3000,
+    foodPerDay: 1000,
+    hospitals: ["Apollo Hospital", "Max Super Speciality", "Fortis Escorts"]
   },
   {
     treatment: "Knee Surgery",
     city: "Chennai",
-    hospitalType: "Private",
     minCost: 40000,
-    maxCost: 65000,
+    maxCost: 60000,
+    tag: "Best Value",
     breakdown: {
       doctor: 12000,
       hospital: 35000,
       medicine: 8000,
       tests: 5000
-    }
+    },
+    timeline: [
+      { day: 1, label: "Consultation", cost: 1500 },
+      { day: 2, label: "Tests", cost: 4000 },
+      { day: 3, label: "Surgery", cost: 42000 },
+      { day: 5, label: "Recovery & Discharge", cost: 7500 }
+    ],
+    travel: 4500,
+    stayPerDay: 2000,
+    foodPerDay: 800,
+    hospitals: ["Apollo Greams Road", "Fortis Malar", "MIOT International"]
   },
   {
     treatment: "Knee Surgery",
-    city: "Chennai",
-    hospitalType: "Government",
-    minCost: 12000,
-    maxCost: 25000,
+    city: "Mumbai",
+    minCost: 65000,
+    maxCost: 90000,
+    tag: "Budget Friendly",
     breakdown: {
-      doctor: 1500,
-      hospital: 8000,
-      medicine: 4000,
-      tests: 2500
-    }
-  },
-  {
-    treatment: "Knee Surgery",
-    city: "Chennai",
-    hospitalType: "Premium",
-    minCost: 100000,
-    maxCost: 150000,
-    breakdown: {
-      doctor: 35000,
-      hospital: 85000,
-      medicine: 20000,
-      tests: 10000
-    }
+      doctor: 20000,
+      hospital: 55000,
+      medicine: 12000,
+      tests: 8000
+    },
+    timeline: [
+      { day: 1, label: "Consultation", cost: 2500 },
+      { day: 2, label: "Advanced Tests", cost: 7500 },
+      { day: 3, label: "Surgery", cost: 65000 },
+      { day: 5, label: "Discharge", cost: 15000 }
+    ],
+    travel: 7000,
+    stayPerDay: 4000,
+    foodPerDay: 1200,
+    hospitals: ["Nanavati Hospital", "Lilavati Hospital", "Kokilaben Dhirubhai Ambani"]
   },
   {
     treatment: "Heart Bypass",
     city: "Delhi",
-    hospitalType: "Private",
-    minCost: 150000,
-    maxCost: 250000,
+    minCost: 180000,
+    maxCost: 280000,
+    tag: "Premium",
     breakdown: {
-      doctor: 50000,
-      hospital: 150000,
-      medicine: 30000,
+      doctor: 60000,
+      hospital: 160000,
+      medicine: 40000,
       tests: 20000
-    }
-  },
-  {
-    treatment: "Heart Bypass",
-    city: "Delhi",
-    hospitalType: "Government",
-    minCost: 50000,
-    maxCost: 100000,
-    breakdown: {
-      doctor: 5000,
-      hospital: 60000,
-      medicine: 20000,
-      tests: 15000
-    }
-  },
-  {
-    treatment: "Heart Bypass",
-    city: "Delhi",
-    hospitalType: "Premium",
-    minCost: 350000,
-    maxCost: 550000,
-    breakdown: {
-      doctor: 100000,
-      hospital: 350000,
-      medicine: 60000,
-      tests: 40000
-    }
-  },
-  {
-    treatment: "Dental Implant",
-    city: "Chennai",
-    hospitalType: "Private",
-    minCost: 25000,
-    maxCost: 45000,
-    breakdown: {
-      doctor: 10000,
-      hospital: 10000,
-      medicine: 3000,
-      tests: 2000
-    }
+    },
+    timeline: [
+      { day: 1, label: "Triage & Consult", cost: 5000 },
+      { day: 2, label: "Cardiac Imaging", cost: 15000 },
+      { day: 4, label: "CABG Surgery", cost: 210000 },
+      { day: 10, label: "Post-op Care & Discharge", cost: 50000 }
+    ],
+    travel: 6000,
+    stayPerDay: 3500,
+    foodPerDay: 1200,
+    hospitals: ["Medanta - The Medicity", "Apollo Delhi", "Fortis Escorts Heart Institute"]
   },
   {
     treatment: "Appendix Surgery",
     city: "Mumbai",
-    hospitalType: "Private",
-    minCost: 45000,
-    maxCost: 75000,
+    minCost: 50000,
+    maxCost: 80000,
+    tag: "Budget Friendly",
     breakdown: {
       doctor: 15000,
-      hospital: 40000,
+      hospital: 45000,
       medicine: 12000,
       tests: 8000
-    }
+    },
+    timeline: [
+      { day: 1, label: "Emergency Consult", cost: 3000 },
+      { day: 1, label: "Scans", cost: 5000 },
+      { day: 2, label: "Appendectomy", cost: 55000 },
+      { day: 3, label: "Discharge", cost: 12000 }
+    ],
+    travel: 7000,
+    stayPerDay: 4000,
+    foodPerDay: 1200,
+    hospitals: ["H. N. Reliance", "SevenHills Hospital", "Jaslok Hospital"]
   }
 ];
 
 export const treatments = [...new Set(costData.map(d => d.treatment))];
-export const hospitalTypes = ["Government", "Private", "Premium"];

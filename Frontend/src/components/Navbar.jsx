@@ -1,7 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const [userInfo, setUserInfo] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const data = localStorage.getItem('userInfo');
+    if (data) {
+      setUserInfo(JSON.parse(data));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('userInfo');
+    setUserInfo(null);
+    navigate('/login');
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
@@ -44,16 +60,32 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA */}
+          {/* CTA / User Menu */}
           <div className="flex items-center gap-6">
-            <button className="hidden sm:block text-slate-600 font-semibold hover:text-teal-600 transition-colors">
-              Login
-            </button>
-            <Link to="/signup">
-              <button className="bg-slate-900 text-white px-6 py-2.5 rounded-2xl font-bold hover:bg-slate-800 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-slate-200">
-                Sign Up
-              </button>
-            </Link>
+            {userInfo ? (
+              <div className="flex items-center gap-4">
+                <span className="text-slate-700 font-bold hidden sm:block">Hi, {userInfo.fullname.split(' ')[0]}</span>
+                <button 
+                  onClick={handleLogout}
+                  className="bg-red-50 text-red-600 px-4 py-2 rounded-xl font-bold hover:bg-red-100 transition-all"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <>
+                <Link to="/login">
+                  <button className="hidden sm:block text-slate-600 font-semibold hover:text-teal-600 transition-colors">
+                    Login
+                  </button>
+                </Link>
+                <Link to="/signup">
+                  <button className="bg-slate-900 text-white px-6 py-2.5 rounded-2xl font-bold hover:bg-slate-800 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-slate-200">
+                    Sign Up
+                  </button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>
