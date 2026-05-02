@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import heroBg from '../assets/hero-bg.png';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import API_URL from '../config';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const Signup = () => {
     console.log('Attempting signup with:', { ...formData, password: '***' });
 
     try {
-      const response = await fetch('https://meditravel-assist.onrender.com/api/users/register', {
+      const response = await fetch(`${API_URL}/users/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -48,7 +49,7 @@ const Signup = () => {
       }
     } catch (err) {
       console.error('Signup error:', err);
-      setError('Network error. Is the backend server running on port 5000?');
+      setError('Unable to connect to the server. Please check your internet connection or try again later.');
     } finally {
       setLoading(false);
     }
