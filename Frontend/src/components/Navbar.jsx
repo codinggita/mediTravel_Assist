@@ -56,12 +56,13 @@ const Navbar = () => {
               <span className="w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
               Emergency
             </Link>
-            <a 
-              href="#" 
+            <Link 
+              to="/dashboard"
               className="px-4 py-2 text-slate-600 hover:text-teal-600 hover:bg-teal-50/50 rounded-xl font-medium transition-all duration-200"
             >
               Dashboard
-            </a>
+            </Link>
+
 
           </div>
 
