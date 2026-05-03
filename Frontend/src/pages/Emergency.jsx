@@ -126,8 +126,103 @@ const Emergency = () => {
             </div>
           </div>
 
+          {/* Nearby Hospitals Section */}
+          <section className="mt-16 space-y-8">
+            <div className="flex items-end justify-between">
+              <div>
+                <h2 className="text-3xl font-black text-white">Nearby <span className="text-blue-500">Facilities</span></h2>
+                <p className="text-slate-400 font-medium">Prioritized JCI & NABH Accredited Emergency Centers</p>
+              </div>
+              <div className="hidden sm:block text-right">
+                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest block">Current Location</span>
+                <span className="text-sm font-bold text-slate-300">New Delhi, NCR Area</span>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { 
+                  name: "Apollo Hospital", 
+                  dist: "3.2 km", 
+                  phone: "1066", 
+                  address: "Mathura Rd, Sarita Vihar",
+                  specialty: "Cardiac & Trauma"
+                },
+                { 
+                  name: "Fortis Escorts", 
+                  dist: "4.8 km", 
+                  phone: "+91-11-47135000", 
+                  address: "Okhla Rd, Sukhdev Vihar",
+                  specialty: "Advanced Cardiology"
+                },
+                { 
+                  name: "Max Super Specialty", 
+                  dist: "5.1 km", 
+                  phone: "011-26515050", 
+                  address: "Saket Institutional Area",
+                  specialty: "Neurology & Trauma"
+                },
+                { 
+                  name: "Medanta - The Medicity", 
+                  dist: "12 km", 
+                  phone: "1068", 
+                  address: "Sector 38, Gurugram",
+                  specialty: "Multi-Organ Transplant"
+                },
+                { 
+                  name: "AIIMS Trauma Centre", 
+                  dist: "7.4 km", 
+                  phone: "011-26199000", 
+                  address: "Ring Rd, Safdarjung Enclave",
+                  specialty: "Level 1 Trauma Care"
+                },
+                { 
+                  name: "BLK-Max Hospital", 
+                  dist: "9.2 km", 
+                  phone: "011-30403040", 
+                  address: "Pusa Rd, Rajinder Nagar",
+                  specialty: "Critical Care"
+                }
+              ].map((hosp, i) => (
+                <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-[2.5rem] hover:bg-white/10 transition-all group">
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                      {hosp.dist}
+                    </div>
+                    <div className="text-slate-500 group-hover:text-red-500 transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    </div>
+                  </div>
+                  
+                  <h4 className="text-xl font-black text-white mb-1">{hosp.name}</h4>
+                  <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">{hosp.specialty}</p>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3 text-slate-400">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                      <span className="text-xs font-medium">{hosp.address}</span>
+                    </div>
+                    
+                    <a 
+                      href={`tel:${hosp.phone}`} 
+                      className="flex items-center justify-between bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 p-4 rounded-2xl transition-all"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center text-white">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <span className="font-black text-red-500 text-lg">{hosp.phone}</span>
+                      </div>
+                      <span className="text-[10px] font-black text-red-400 uppercase tracking-widest">Call Now</span>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
           {/* Guidelines Section */}
-          <section className="mt-16 grid md:grid-cols-3 gap-8">
+          <section className="mt-24 grid md:grid-cols-3 gap-8 border-t border-white/5 pt-16">
             {[
               { title: "Medical Record Access", desc: "Instantly share your medical history with local paramedics using your secure QR code." },
               { title: "Insurance Direct-Pay", desc: "Emergency admissions are covered under our direct-pay protocol with partner insurers." },
