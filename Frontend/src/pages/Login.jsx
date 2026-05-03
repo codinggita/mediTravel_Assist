@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import heroBg from '../assets/hero-bg.png';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import API_URL from '../config';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ const Login = () => {
     console.log('Attempting login with:', email);
 
     try {
-      const response = await fetch('http://localhost:5000/api/users/login', {
+      const response = await fetch(`${API_URL}/users/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -36,7 +37,15 @@ const Login = () => {
       });
 
       console.log('Response status:', response.status);
-      const data = await response.json();
+      let data;
+      try {
+        data = await response.json();
+      } catch (e) {
+        console.error('JSON parse error:', e);
+        setError('Server returned an invalid response (Error ' + response.status + '). Please try again later.');
+        return;
+      }
+
       console.log('Response data:', data);
 
       if (response.ok) {
@@ -47,7 +56,7 @@ const Login = () => {
       }
     } catch (err) {
       console.error('Login error:', err);
-      setError('Network error. Is the backend server running on port 5000?');
+      setError('Unable to connect to the server. This may be due to a CORS issue or the server being down.');
     } finally {
       setLoading(false);
     }

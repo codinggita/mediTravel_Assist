@@ -5,6 +5,8 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Specialists from './pages/Specialists';
 import CostExplorer from './pages/CostExplorer';
+import Emergency from './pages/Emergency';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -15,10 +17,13 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/specialists" element={<Specialists />} />
         <Route path="/cost-explorer" element={<CostExplorer />} />
-       
+        <Route path="/emergency" element={<Emergency />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );
 }
+
+
 
 export default App;

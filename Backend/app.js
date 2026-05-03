@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user.routes');
+const doctorRoutes = require('./routes/doctor.routes');
+
 
 const app = express();
 
@@ -11,18 +13,36 @@ app.use((req, res, next) => {
     next();
 });
 
+const mongoose = require('mongoose');
+
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: [
+        'http://localhost:5173', 
+        'http://127.0.0.1:5173', 
+        'https://medi-travel-assist.vercel.app'
+    ],
     credentials: true
 }));
 app.use(express.json());
 app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
+app.use('/api/doctors', doctorRoutes);
+
+
+app.get('/health', (req, res) => {
+    res.status(200).json({
+        status: 'OK',
+        uptime: process.uptime(),
+        timestamp: new Date().toISOString(),
+        database: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected'
+    });
+});
 
 app.get('/', (req, res) => {
     res.send('MediTravel Assist API is running...');
 });
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {

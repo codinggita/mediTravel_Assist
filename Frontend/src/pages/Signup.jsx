@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import heroBg from '../assets/hero-bg.png';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import API_URL from '../config';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const Signup = () => {
     console.log('Attempting signup with:', { ...formData, password: '***' });
 
     try {
-      const response = await fetch('http://localhost:5000/api/users/register', {
+      const response = await fetch(`${API_URL}/users/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -37,7 +38,15 @@ const Signup = () => {
       });
 
       console.log('Response status:', response.status);
-      const data = await response.json();
+      let data;
+      try {
+        data = await response.json();
+      } catch (e) {
+        console.error('JSON parse error:', e);
+        setError('Server returned an invalid response (Error ' + response.status + '). Please try again later.');
+        return;
+      }
+
       console.log('Response data:', data);
 
       if (response.ok) {
@@ -48,7 +57,7 @@ const Signup = () => {
       }
     } catch (err) {
       console.error('Signup error:', err);
-      setError('Network error. Is the backend server running on port 5000?');
+      setError('Unable to connect to the server. This may be due to a CORS issue or the server being down.');
     } finally {
       setLoading(false);
     }
