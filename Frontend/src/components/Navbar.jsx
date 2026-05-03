@@ -49,15 +49,20 @@ const Navbar = () => {
             >
               Cost Explorer
             </Link>
-            {['Emergency', 'Dashboard'].map((item) => (
-              <a 
-                key={item}
-                href="#" 
-                className="px-4 py-2 text-slate-600 hover:text-teal-600 hover:bg-teal-50/50 rounded-xl font-medium transition-all duration-200"
-              >
-                {item}
-              </a>
-            ))}
+            <Link 
+              to="/emergency"
+              className="px-4 py-2 text-red-600 hover:bg-red-50 rounded-xl font-bold transition-all duration-200 flex items-center gap-2"
+            >
+              <span className="w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
+              Emergency
+            </Link>
+            <a 
+              href="#" 
+              className="px-4 py-2 text-slate-600 hover:text-teal-600 hover:bg-teal-50/50 rounded-xl font-medium transition-all duration-200"
+            >
+              Dashboard
+            </a>
+
           </div>
 
           {/* CTA / User Menu */}
