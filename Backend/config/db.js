@@ -13,11 +13,10 @@ const connectDB = async () => {
         console.log(`MongoDB Connected: ${conn.connection.host}`);
     } catch (error) {
         console.error(`MongoDB Connection Error: ${error.message}`);
-        // Don't exit process in development, but maybe in production?
-        // On Render, exiting will cause a restart loop which is good if it's a transient issue.
-        process.exit(1);
+        console.error('Check if your IP is whitelisted in MongoDB Atlas!');
     }
 };
+
 
 module.exports = connectDB;
 
