@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
+// Dashboard page for user profile and treatment tracking
 const Dashboard = () => {
+
   const [user, setUser] = useState(null);
 
   useEffect(() => {
