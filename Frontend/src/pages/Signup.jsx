@@ -38,7 +38,15 @@ const Signup = () => {
       });
 
       console.log('Response status:', response.status);
-      const data = await response.json();
+      let data;
+      try {
+        data = await response.json();
+      } catch (e) {
+        console.error('JSON parse error:', e);
+        setError('Server returned an invalid response (Error ' + response.status + '). Please try again later.');
+        return;
+      }
+
       console.log('Response data:', data);
 
       if (response.ok) {
@@ -49,7 +57,7 @@ const Signup = () => {
       }
     } catch (err) {
       console.error('Signup error:', err);
-      setError('Unable to connect to the server. Please check your internet connection or try again later.');
+      setError('Unable to connect to the server. This may be due to a CORS issue or the server being down.');
     } finally {
       setLoading(false);
     }
